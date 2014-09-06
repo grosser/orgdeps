@@ -11,6 +11,7 @@ class Initial < ActiveRecord::Migration
     create_table :organization_memberships do |t|
       t.integer :user_id, null: false
       t.integer :organization_id, null: false
+      t.timestamps
     end
     add_index :organization_memberships, [:user_id, :organization_id], unique: true
 
@@ -18,6 +19,7 @@ class Initial < ActiveRecord::Migration
       t.string :name, null: false
       t.string :github_token, null: false
       t.text :repositories
+      t.timestamps
     end
     add_index :organizations, [:name], unique: true
   end

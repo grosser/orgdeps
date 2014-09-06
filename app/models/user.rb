@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :organization_memberships
+  has_many :organization_memberships, dependent: :destroy
   has_many :organizations, through: :organization_memberships
 
   class << self

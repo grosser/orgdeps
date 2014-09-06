@@ -28,6 +28,8 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    bootstrap-sass (3.1.1.1)
+      sass (~> 3.2)
     builder (3.2.2)
     dotenv (0.11.1)
       dotenv-deployment (~> 0.0.2)
@@ -72,6 +74,8 @@ GEM
       multi_json (~> 1.3)
       oauth2 (~> 0.9.3)
       omniauth (~> 1.2)
+    organization_audit (1.0.5)
+      json
     pg (0.17.1)
     polyglot (0.3.5)
     puma (2.8.2)
@@ -95,6 +99,8 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.3.2)
+    repo_dependency_graph (0.2.0)
+      organization_audit
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -126,6 +132,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass
   dotenv
   httparty
   jquery-rails
@@ -134,5 +141,6 @@ DEPENDENCIES
   pg
   puma
   rails (~> 4.1.5)
+  repo_dependency_graph
   sass-rails (~> 4.0.3)
   uglifier (>= 1.3.0)

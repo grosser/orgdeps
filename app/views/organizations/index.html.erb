@@ -1,0 +1,3 @@
+<% @organizations.each do |organization| %>
+  <%= link_to organization, organization_repositories_path(organization) %><br/>
+<% end %>

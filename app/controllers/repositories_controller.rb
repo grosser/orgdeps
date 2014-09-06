@@ -1,6 +1,6 @@
 class RepositoriesController < ApplicationController
   def index
-    render :text => "ALL REPOS FROM #{organization.name}"
+    @repositories = organization.repositories
   end
 
   def show
@@ -10,6 +10,6 @@ class RepositoriesController < ApplicationController
   private
 
   def organization
-    Organization.find(params[:organization_id])
+    @organization ||= Organization.find(params[:organization_id])
   end
 end
