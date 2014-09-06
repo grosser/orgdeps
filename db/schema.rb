@@ -18,16 +18,20 @@ ActiveRecord::Schema.define(version: 20140906211149) do
   enable_extension "hstore"
 
   create_table "organization_memberships", force: true do |t|
-    t.integer "user_id",         null: false
-    t.integer "organization_id", null: false
+    t.integer  "user_id",         null: false
+    t.integer  "organization_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "organization_memberships", ["user_id", "organization_id"], name: "index_organization_memberships_on_user_id_and_organization_id", unique: true, using: :btree
 
   create_table "organizations", force: true do |t|
-    t.string "name",         null: false
-    t.string "github_token", null: false
-    t.text   "repositories"
+    t.string   "name",         null: false
+    t.string   "github_token", null: false
+    t.text     "repositories"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "organizations", ["name"], name: "index_organizations_on_name", unique: true, using: :btree

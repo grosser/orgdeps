@@ -7,8 +7,10 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'dotenv'
 gem 'httparty'
+gem 'repo_dependency_graph'
 
 # assets
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
+gem 'bootstrap-sass'

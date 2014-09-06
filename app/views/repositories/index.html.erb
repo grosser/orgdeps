@@ -1,0 +1,30 @@
+<br/>
+Last updated at <%= @organization.updated_at.to_s(:db) %><br/>
+
+<% @repositories.each do |name, uses| %>
+  <%
+    used = @repositories.map do |d, uses|
+      used = uses.detect { |d| d.first == name }
+      [d, used.last] if used
+    end.compact
+  %>
+
+  <%= content_tag :a, '', name: name %>
+  <h1><%= link_to name, "https://github.com/#{@organization.name}/#{name}" %></h1>
+
+  <table>
+    <tr>
+      <th>Uses</th><th>Used</th>
+    </tr>
+    <% [used.size, uses.size, 1].max.times do |i| %>
+      <tr>
+        <% [uses[i], used[i]].compact.each do |name, version| %>
+          <td>
+            <%= link_to name, "##{name}" %>
+            <% if version %> @ <%= version %> <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
