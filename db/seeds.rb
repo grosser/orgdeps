@@ -1,7 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Organization.create!(
+  github_token: "f8a52fb5411511fb7b93b9729794dc753e6bafae", # uer: some-public-token
+  name: "samson-test-org"
+)
