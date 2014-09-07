@@ -18,10 +18,12 @@ Last updated at <%= @organization.updated_at.to_s(:db) %><br/>
     </tr>
     <% [used.size, uses.size, 1].max.times do |i| %>
       <tr>
-        <% [uses[i], used[i]].compact.each do |name, version| %>
+        <% [uses[i], used[i]].each do |name, version| %>
           <td>
-            <%= link_to name, "##{name}" %>
-            <% if version %> @ <%= version %> <% end %>
+            <% if name %>
+              <%= link_to name, "##{name}" %>
+              <% if version %> @ <%= version %> <% end %>
+            <% end %>
           </td>
         <% end %>
       </tr>
