@@ -1,10 +1,14 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
+require 'minitest/rails'
 
-class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+ActiveSupport::TestCase.class_eval do
   fixtures :all
+end
 
-  # Add more helper methods to be used by all tests here...
+ActionController::TestCase.class_eval do
+  def login_as(user)
+    session[:user_id] = user.id
+  end
 end
