@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Orgdeps</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -8,14 +8,14 @@
 </head>
 <body>
 
-<% if current_user %>
-  <div>
-    Welcome, <%= current_user.name %>!
-    <%= link_to "Sign Out", signout_path %>
-  </div>
-<% end %>
+<div class="wrap">
+  <%= render "layouts/header" %>
 
-<%= yield %>
+  <div class="container">
+    <%= render "layouts/alerts" %>
+    <%= yield %>
+  </div>
+</div>
 
 </body>
 </html>

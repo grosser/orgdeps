@@ -23,4 +23,9 @@ class User < ActiveRecord::Base
       response.map{|x| Organization.find_or_create_by!(name: x.fetch("login")) }
     end
   end
+
+  def gravatar_url
+    md5 = email.blank? ? "default" : Digest::MD5.hexdigest(email)
+    "https://www.gravatar.com/avatar/#{md5}"
+  end
 end

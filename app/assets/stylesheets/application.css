@@ -14,3 +14,8 @@
  *= require_self
  *= require bootstrap
  */
+
+.gravatar {
+  height: 30px;
+  width: 30px;
+}
