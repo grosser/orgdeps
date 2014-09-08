@@ -1,5 +1,9 @@
-<br/>
-Last updated at <%= @organization.updated_at.to_s(:db) %><br/>
+<h1>
+  <%= link_to "Organizations", organizations_path %> &raquo;
+  <%= @organization.name %>
+  <%= link_to "Edit", edit_organization_path(@organization) %>
+</h1>
+Dependencies updated at <%= @organization.updated_at.to_s(:db) %><br/>
 
 <% @repositories.each do |name, uses| %>
   <%

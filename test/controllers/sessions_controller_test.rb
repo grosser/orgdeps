@@ -28,6 +28,7 @@ describe SessionsController do
       user.name.must_equal "A Name"
       user.email.must_equal "email@foo.com"
       user.external_id.must_equal "github-abc"
+      user.organizations.map(&:name).must_equal ["minimum"]
     end
 
     describe "with existing user" do

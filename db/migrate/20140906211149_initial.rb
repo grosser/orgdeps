@@ -17,7 +17,7 @@ class Initial < ActiveRecord::Migration
 
     create_table :organizations do |t|
       t.string :name, null: false
-      t.string :github_token, null: false
+      t.string :github_token
       t.text :repositories
       t.timestamps
     end

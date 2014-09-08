@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :authenticate!
+  rescue_from ActiveRecord::RecordNotFound do
+    render :text => "Not found", :status => :not_found
+  end
 
   private
 
