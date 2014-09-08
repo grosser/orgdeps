@@ -18,5 +18,10 @@ describe Organization do
       organization.safe_github_token = "12345678912345678123456"
       organization.github_token.must_equal "12345678912345678123456"
     end
+
+    it "ignores update with unchanged form value" do
+      organization.safe_github_token = "1234567"
+      organization.github_token.must_equal "thetokencanbeverylongindeed"
+    end
   end
 end
