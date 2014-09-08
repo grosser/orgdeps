@@ -26,4 +26,12 @@ class Organization < ActiveRecord::Base
       repositories_updated_at: Time.now
     )
   end
+
+  def to_param
+    name
+  end
+
+  def self.find_by_param!(param)
+    where(name: param).first!
+  end
 end
