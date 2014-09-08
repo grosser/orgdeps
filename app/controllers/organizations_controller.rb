@@ -15,6 +15,6 @@ class OrganizationsController < ApplicationController
   private
 
   def organization
-    @organization ||= current_user.organizations.find(params[:id])
+    @organization ||= current_user.organizations.find_by_param!(params[:id])
   end
 end

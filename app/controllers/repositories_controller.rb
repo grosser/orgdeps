@@ -10,6 +10,6 @@ class RepositoriesController < ApplicationController
   private
 
   def organization
-    @organization ||= Organization.find(params[:organization_id])
+    @organization ||= Organization.find_by_param!(params[:organization_id])
   end
 end
