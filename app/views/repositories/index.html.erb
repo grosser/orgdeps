@@ -37,5 +37,9 @@
     </table>
   <% end %>
 <% else %>
-  Repositories will be listed here once a github token is set and the import ran.
+  <% if @organization.github_token.blank? %>
+    <%= link_to "Add a token to fetch dependencies", edit_organization_path(@organization) %>
+  <% else %>
+    Repositories will be listed here once the import ran (once a day).
+  <% end %>
 <% end %>
