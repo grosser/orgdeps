@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate!
     unless session[:user_id] && @current_user = User.find_by_id(session[:user_id])
+      session[:return_to] = request.fullpath
       redirect_to "/auth/github"
     end
   end

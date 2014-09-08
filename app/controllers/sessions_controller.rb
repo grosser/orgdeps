@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   def create
     user = User.authenticate(request.env["omniauth.auth"])
     session[:user_id] = user.id
-    redirect_to root_url, notice: "Welcome"
+    redirect_to session.delete(:return_to) || root_url, notice: "Welcome"
   end
 
   def destroy
