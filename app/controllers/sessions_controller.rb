@@ -9,6 +9,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, notice: "Signed out!"
+    render :text => %{<html><body>Logged out!<br/><a href="/">Login?</a><body>}
   end
 end
