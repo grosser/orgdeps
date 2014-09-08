@@ -27,11 +27,12 @@ ActiveRecord::Schema.define(version: 20140906211149) do
   add_index "organization_memberships", ["user_id", "organization_id"], name: "index_organization_memberships_on_user_id_and_organization_id", unique: true, using: :btree
 
   create_table "organizations", force: true do |t|
-    t.string   "name",         null: false
+    t.string   "name",                    null: false
     t.string   "github_token"
     t.text     "repositories"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "repositories_updated_at"
   end
 
   add_index "organizations", ["name"], name: "index_organizations_on_name", unique: true, using: :btree

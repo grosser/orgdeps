@@ -19,6 +19,7 @@ class Initial < ActiveRecord::Migration
       t.string :name, null: false
       t.string :github_token
       t.text :repositories
+      t.timestamp :repositories_updated_at
       t.timestamps
     end
     add_index :organizations, [:name], unique: true
