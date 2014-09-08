@@ -1,5 +1,4 @@
-<%= link_to 'Add', new_organization_path %>
-
+<h1>Your organizations</h1>
 <% @organizations.each do |organization| %>
   <%= link_to organization, organization_repositories_path(organization) %><br/>
 <% end %>

@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140906211149) do
 
   create_table "organizations", force: true do |t|
     t.string   "name",         null: false
-    t.string   "github_token", null: false
+    t.string   "github_token"
     t.text     "repositories"
     t.datetime "created_at"
     t.datetime "updated_at"

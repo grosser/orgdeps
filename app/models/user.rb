@@ -6,12 +6,11 @@ class User < ActiveRecord::Base
     def authenticate(auth)
       external_id = "#{auth.fetch("provider")}-#{auth.fetch("uid")}"
       where(:external_id => external_id).first || begin
-        raise "Unknown orgs" unless organizations = github_organizations(auth).presence
         User.create!(
           name: auth["info"]["name"] || auth["info"]["nickname"] || "No name",
           email: auth["info"]["email"],
           external_id: external_id,
-          organizations: organizations
+          organizations: github_organizations(auth)
         )
       end
     end
@@ -21,7 +20,7 @@ class User < ActiveRecord::Base
     def github_organizations(auth)
       url = "https://api.github.com/user/orgs?access_token=#{auth.fetch("credentials").fetch("token")}"
       response = HTTParty.get(url, headers: {"User-Agent" => "orgdeps"})
-      response.map{|x| Organization.find_by_name(x.fetch("login")) }.compact
+      response.map{|x| Organization.find_or_create_by!(name: x.fetch("login")) }
     end
   end
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "organizations#index"
-  resources :organizations do
+  resources :organizations, only: [:index, :edit, :update] do
     resources :repositories, only: [:index, :show]
   end
 
