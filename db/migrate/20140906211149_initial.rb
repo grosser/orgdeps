@@ -1,7 +1,7 @@
 class Initial < ActiveRecord::Migration
   def change
     create_table :users do |t|
-      t.integer :external_id, null: false
+      t.string :external_id, null: false
       t.string :name, null: false
       t.string :email, null: false
       t.timestamps
