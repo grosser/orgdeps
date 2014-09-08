@@ -14,9 +14,9 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
-gem 'webmock'
 
 group :test do
   gem 'minitest-rails', '~> 2.0.0.beta1'
   gem 'minitest-rg'
+  gem 'webmock'
 end

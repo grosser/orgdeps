@@ -30,17 +30,26 @@ describe SessionsController do
       user.external_id.must_equal "github-abc"
     end
 
-    it "logs in an existing user" do
-      provider, uid = users(:minimum).external_id.split("-")
-      request.env["omniauth.auth"] = {
-        "provider" => provider,
-        "uid" => uid
-      }
+    describe "with existing user" do
+      before do
+        provider, uid = users(:minimum).external_id.split("-")
+        request.env["omniauth.auth"] = {
+          "provider" => provider,
+          "uid" => uid
+        }
+      end
 
-      post :create, provider: "github"
+      it "logs in an existing user" do
+        post :create, provider: "github"
+        assert_redirected_to "/"
+        session[:user_id].must_equal users(:minimum).id
+      end
 
-      assert_redirected_to "/"
-      session[:user_id].must_equal users(:minimum).id
+      it "returns to wanted location" do
+        session[:return_to] = "/foobar"
+        post :create, provider: "github"
+        assert_redirected_to "/foobar"
+      end
     end
   end
 
