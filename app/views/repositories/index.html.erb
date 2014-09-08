@@ -3,34 +3,39 @@
   <%= @organization.name %>
   <%= link_to "Edit", edit_organization_path(@organization) %>
 </h1>
-Dependencies updated at <%= @organization.updated_at.to_s(:db) %><br/>
 
-<% @repositories.each do |name, uses| %>
-  <%
-    used = @repositories.map do |d, uses|
-      used = uses.detect { |d| d.first == name }
-      [d, used.last] if used
-    end.compact
-  %>
+<% if @organization.repositories_updated_at %>
+  Dependencies updated at <%= @organization.repositories_updated_at.to_s(:db) %><br/>
 
-  <%= content_tag :a, '', name: name %>
-  <h1><%= link_to name, "https://github.com/#{@organization.name}/#{name}" %></h1>
+  <% @repositories.each do |name, uses| %>
+    <%
+      used = @repositories.map do |d, uses|
+        used = uses.detect { |d| d.first == name }
+        [d, used.last] if used
+      end.compact
+    %>
 
-  <table>
-    <tr>
-      <th>Uses</th><th>Used</th>
-    </tr>
-    <% [used.size, uses.size, 1].max.times do |i| %>
+    <%= content_tag :a, '', name: name %>
+    <h1><%= link_to name, "https://github.com/#{@organization.name}/#{name}" %></h1>
+
+    <table>
       <tr>
-        <% [uses[i], used[i]].each do |name, version| %>
-          <td>
-            <% if name %>
-              <%= link_to name, "##{name}" %>
-              <% if version %> @ <%= version %> <% end %>
-            <% end %>
-          </td>
-        <% end %>
+        <th>Uses</th><th>Used</th>
       </tr>
-    <% end %>
-  </table>
+      <% [used.size, uses.size, 1].max.times do |i| %>
+        <tr>
+          <% [uses[i], used[i]].each do |name, version| %>
+            <td>
+              <% if name %>
+                <%= link_to name, "##{name}" %>
+                <% if version %> @ <%= version %> <% end %>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+<% else %>
+  Repositories will be listed here once a github token is set and the import ran.
 <% end %>

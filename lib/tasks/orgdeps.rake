@@ -8,7 +8,10 @@ namespace :orgdeps do
         organization: organization,
         private: true,
       )
-      organization.update_attributes!(repositories: data)
+      organization.update_attributes!(
+        repositories: data,
+        repositories_updated_at: Time.now
+      )
     end
   end
 end
