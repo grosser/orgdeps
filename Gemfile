@@ -17,6 +17,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :test do
   gem 'minitest-rails', '~> 2.0.0.beta1'
   gem 'minitest-rg'
