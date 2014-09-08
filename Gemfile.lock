@@ -27,10 +27,13 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    addressable (2.3.6)
     arel (5.0.1.20140414130214)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     builder (3.2.2)
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
     dotenv (0.11.1)
       dotenv-deployment (~> 0.0.2)
     dotenv-deployment (0.0.2)
@@ -106,6 +109,7 @@ GEM
     rake (10.3.2)
     repo_dependency_graph (0.2.0)
       organization_audit
+    safe_yaml (1.0.3)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -132,6 +136,9 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    webmock (1.18.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
 
 PLATFORMS
   ruby
@@ -151,3 +158,4 @@ DEPENDENCIES
   repo_dependency_graph
   sass-rails (~> 4.0.3)
   uglifier (>= 1.3.0)
+  webmock
