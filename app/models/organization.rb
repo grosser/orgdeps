@@ -14,4 +14,16 @@ class Organization < ActiveRecord::Base
   def safe_github_token=(token)
     self.github_token = token if token.size != SAFE_TOKEN_SIZE
   end
+
+  def update_repositories
+    data = RepoDependencyGraph.dependencies(
+      token: github_token,
+      organization: name,
+      private: true,
+    )
+    update_attributes!(
+      repositories: data,
+      repositories_updated_at: Time.now
+    )
+  end
 end
