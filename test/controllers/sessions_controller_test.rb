@@ -59,7 +59,7 @@ describe SessionsController do
       login_as users(:minimum)
       delete :destroy
       refute session[:user_id]
-      assert_redirected_to "/"
+      assert_response :success # cannot redirect since every action will log you in again
     end
   end
 end
