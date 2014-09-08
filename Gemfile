@@ -19,4 +19,5 @@ group :test do
   gem 'minitest-rails', '~> 2.0.0.beta1'
   gem 'minitest-rg'
   gem 'webmock'
+  gem 'mocha', require: 'mocha/setup'
 end

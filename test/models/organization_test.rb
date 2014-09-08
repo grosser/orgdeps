@@ -24,4 +24,13 @@ describe Organization do
       organization.github_token.must_equal "thetokencanbeverylongindeed"
     end
   end
+
+  describe "#update_repositories" do
+    it "updates" do
+      RepoDependencyGraph.expects(:dependencies).returns "x" => "y"
+      organization.update_repositories
+      organization.repositories.must_equal "x" => "y"
+      organization.repositories_updated_at.wont_be_nil
+    end
+  end
 end
