@@ -7,22 +7,20 @@
 <% if @organization.repositories_updated_at %>
   Dependencies updated at <%= @organization.repositories_updated_at.to_s(:db) %><br/>
 
-  <% @repositories.each do |name, uses| %>
-    <%
-      used = @repositories.map do |d, uses|
-        used = uses.detect { |d| d.first == name }
-        [d, used.last] if used
-      end.compact
-    %>
-
+  <% @organization.repositories.keys.each do |name| %>
     <%= content_tag :a, '', name: name %>
-    <h2><%= link_to name, "https://github.com/#{@organization.name}/#{name}" %></h2>
+    <h2>
+      <%= link_to name, "https://github.com/#{@organization.name}/#{name}" %>
+      <%= image_tag organization_repository_url(@organization, name, token: @organization.badge_token, format: :svg) %>
+    </h2>
+
+    <% used, uses = @organization.repository(name) %>
 
     <table>
       <tr>
         <th>Uses</th><th>Used</th>
       </tr>
-      <% [used.size, uses.size, 1].max.times do |i| %>
+      <% [used.size, uses.size].max.times do |i| %>
         <tr>
           <% [uses[i], used[i]].each do |name, version| %>
             <td>
