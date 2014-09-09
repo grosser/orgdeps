@@ -51,4 +51,18 @@ describe Organization do
       organization.badge("a").wont_be_nil
     end
   end
+
+  describe "#repository" do
+    it "shows uses and used" do
+      organization.repository('a').must_equal [
+        [["b", "~> 0.1"], ["c"]],
+        []
+      ]
+
+      organization.repository('c').must_equal [
+        [["b", "master"]],
+        [["a", nil]]
+      ]
+    end
+  end
 end
