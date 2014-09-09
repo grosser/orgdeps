@@ -42,7 +42,7 @@ class Organization < ActiveRecord::Base
     uses = repositories[name]
     used = repositories.map do |d, uses|
       used = uses.detect { |d| d.first == name }
-      [d, used.last] if used
+      [d, used[1]] if used
     end.compact
     [uses, used]
   end
