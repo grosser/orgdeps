@@ -39,7 +39,7 @@ class Organization < ActiveRecord::Base
   end
 
   def repository(name)
-    uses = repositories[name]
+    return unless uses = repositories[name]
     used = repositories.map do |d, uses|
       used = uses.detect { |d| d.first == name }
       [d, used[1]] if used
@@ -48,13 +48,18 @@ class Organization < ActiveRecord::Base
   end
 
   def badge(repository)
-    versions = repository(repository).last.map {|name, version| version }.compact.uniq.sort
-    versions = versions.presence || ['None']
-    if versions.size > MAX_VERSIONS
-      versions = versions[0...MAX_VERSIONS] + ["..."]
+    uses, used = repository(repository)
+    text, color = if uses
+      versions = used.map {|name, version| version }.compact.uniq.sort
+      versions = versions.presence || ['None']
+      if versions.size > MAX_VERSIONS
+        versions = versions[0...MAX_VERSIONS] + ['...']
+      end
+      [versions.join(' / '), (versions.size == 1 ? 'green' : 'yellow')]
+    else
+      ['404', 'red']
     end
-    color = (versions.size == 1 ? 'green' : 'yellow')
-    open("http://img.shields.io/badge/OrgDeps-#{CGI.escape(versions.join(' / ')).gsub('+', '%20')}-#{color}.svg").read
+    open("http://img.shields.io/badge/OrgDeps-#{CGI.escape(text).gsub('+', '%20')}-#{color}.svg").read
   end
 
   private

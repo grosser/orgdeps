@@ -50,6 +50,11 @@ describe Organization do
       stub_request(:get, "http://img.shields.io/badge/OrgDeps-None-green.svg")
       organization.badge("a").wont_be_nil
     end
+
+    it "generates 404 for unknown" do
+      stub_request(:get, "http://img.shields.io/badge/OrgDeps-404-red.svg")
+      organization.badge("x").wont_be_nil
+    end
   end
 
   describe "#repository" do
