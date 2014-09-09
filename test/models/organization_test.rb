@@ -47,7 +47,7 @@ describe Organization do
     end
 
     it "generates for empty" do
-      stub_request(:get, "http://img.shields.io/badge/OrgDeps-NA-green.svg")
+      stub_request(:get, "http://img.shields.io/badge/OrgDeps-None-green.svg")
       organization.badge("a").wont_be_nil
     end
   end

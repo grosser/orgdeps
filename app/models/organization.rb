@@ -49,7 +49,7 @@ class Organization < ActiveRecord::Base
 
   def badge(repository)
     versions = repository(repository).last.map {|name, version| version }.compact.uniq.sort
-    versions = versions.presence || ['NA']
+    versions = versions.presence || ['None']
     if versions.size > MAX_VERSIONS
       versions = versions[0...MAX_VERSIONS] + ["..."]
     end
