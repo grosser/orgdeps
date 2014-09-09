@@ -10,6 +10,7 @@ gem 'omniauth-github'
 gem 'dotenv'
 gem 'httparty'
 gem 'repo_dependency_graph'
+gem 'rack-cache'
 
 # assets
 gem 'sass-rails', '~> 4.0.3'
