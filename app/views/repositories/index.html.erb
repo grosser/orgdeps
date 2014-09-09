@@ -14,7 +14,7 @@
       <%= image_tag organization_repository_url(@organization, name, token: @organization.badge_token, format: :svg) %>
     </h2>
 
-    <% used, uses = @organization.repository(name) %>
+    <% uses, used = @organization.repository(name) %>
 
     <table>
       <tr>
