@@ -33,4 +33,22 @@ describe Organization do
       organization.repositories_updated_at.wont_be_nil
     end
   end
+
+  describe "#generate_badge_token" do
+    it "generates" do
+      Organization.create!(name: 'xxx').badge_token.wont_be_nil
+    end
+  end
+
+  describe "#badge" do
+    it "generates" do
+      stub_request(:get, "http://img.shields.io/badge/OrgDeps-master%20%2F%20~%3E%200.1-yellow.svg")
+      organization.badge("b").wont_be_nil
+    end
+
+    it "generates for empty" do
+      stub_request(:get, "http://img.shields.io/badge/OrgDeps-NA-green.svg")
+      organization.badge("a").wont_be_nil
+    end
+  end
 end

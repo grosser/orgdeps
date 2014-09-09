@@ -1,6 +1,8 @@
 class Organization < ActiveRecord::Base
   SAFE_TOKEN_SIZE = 7
 
+  before_create :generate_badge_token
+
   serialize :repositories
 
   def to_s
@@ -33,5 +35,27 @@ class Organization < ActiveRecord::Base
 
   def self.find_by_param!(param)
     where(name: param).first!
+  end
+
+  def repository(name)
+    uses = repositories[name]
+    used = repositories.map do |d, uses|
+      used = uses.detect { |d| d.first == name }
+      [d, used.last] if used
+    end.compact
+    [uses, used]
+  end
+
+  def badge(repository)
+    versions = repository(repository).last.map {|name, version| version }.compact.uniq.sort
+    versions = versions.presence || ['NA']
+    color = (versions.size == 1 ? 'green' : 'yellow')
+    open("http://img.shields.io/badge/OrgDeps-#{CGI.escape(versions.join(' / ')).gsub('+', '%20')}-#{color}.svg").read
+  end
+
+  private
+
+  def generate_badge_token
+    self.badge_token = SecureRandom.hex(16)
   end
 end
