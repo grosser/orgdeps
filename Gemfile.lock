@@ -92,6 +92,8 @@ GEM
     puma (2.8.2)
       rack (>= 1.1, < 2.0)
     rack (1.5.2)
+    rack-cache (1.2)
+      rack (>= 0.4)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.1.5)
@@ -163,6 +165,7 @@ DEPENDENCIES
   omniauth-github
   pg
   puma
+  rack-cache
   rails (~> 4.1.5)
   rails_12factor
   repo_dependency_graph
