@@ -1,5 +1,6 @@
 class Organization < ActiveRecord::Base
   SAFE_TOKEN_SIZE = 7
+  MAX_VERSIONS = 4
 
   before_create :generate_badge_token
 
@@ -49,6 +50,9 @@ class Organization < ActiveRecord::Base
   def badge(repository)
     versions = repository(repository).last.map {|name, version| version }.compact.uniq.sort
     versions = versions.presence || ['NA']
+    if versions.size > MAX_VERSIONS
+      versions = versions[0...MAX_VERSIONS] + ["..."]
+    end
     color = (versions.size == 1 ? 'green' : 'yellow')
     open("http://img.shields.io/badge/OrgDeps-#{CGI.escape(versions.join(' / ')).gsub('+', '%20')}-#{color}.svg").read
   end
