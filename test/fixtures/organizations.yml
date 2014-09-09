@@ -7,6 +7,7 @@ minimum:
       - - b
         - "~> 0.1"
       - - c
+    b: []
     c:
       - - b
         - master
