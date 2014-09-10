@@ -10,7 +10,8 @@
   <% @organization.repositories.keys.each do |name| %>
     <%= content_tag :a, '', name: name %>
     <h2>
-      <%= link_to name, "https://github.com/#{@organization.name}/#{name}" %>
+      <%= name %>
+      <%= link_to image_tag('github-mark.png', class: :github), "https://github.com/#{@organization.name}/#{name}" %>
       <%= image_tag organization_repository_url(@organization, name, token: @organization.badge_token, format: :svg) %>
     </h2>
 
