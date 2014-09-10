@@ -20,6 +20,12 @@
   width: 30px;
 }
 
-.controller-repositories h2 .github {
-  height: 24px;
+.controller-repositories {
+  h2 .github {
+    height: 24px; /* logo is 64px, scale down a bit */
+  }
+
+  td:first-child {
+    padding-right: 20px; /* little spacing for used row */
+  }
 }
