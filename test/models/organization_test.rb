@@ -57,6 +57,12 @@ describe Organization do
     end
   end
 
+  describe "#repository_names" do
+    it "lists all repos" do
+      organization.repository_names.must_equal ['a', 'b', 'c']
+    end
+  end
+
   describe "#repository" do
     it "shows uses and used" do
       organization.repository('a').must_equal [

@@ -38,8 +38,13 @@ class Organization < ActiveRecord::Base
     where(name: param).first!
   end
 
+  def repository_names
+    (repositories.keys | repositories.flat_map { |n,d| d.map(&:first) }).sort
+  end
+
   def repository(name)
-    return unless uses = repositories[name]
+    return unless repository_names.include?(name)
+    uses = (repositories[name] || [])
     used = repositories.map do |d, uses|
       used = uses.detect { |d| d.first == name }
       [d, used[1]] if used
