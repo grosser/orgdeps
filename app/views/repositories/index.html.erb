@@ -7,7 +7,7 @@
 <% if @organization.repositories_updated_at %>
   Dependencies updated at <%= @organization.repositories_updated_at.to_s(:db) %><br/>
 
-  <% @organization.repositories.keys.each do |name| %>
+  <% @organization.repository_names.each do |name| %>
     <%= content_tag :a, '', name: name %>
     <h2>
       <%= name %>
