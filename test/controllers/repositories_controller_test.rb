@@ -18,7 +18,7 @@ describe RepositoriesController do
 
   describe "#show" do
     before do
-      stub_request(:get, "http://img.shields.io/badge/OrgDeps-master%20%2F%20~%3E%200.1-yellow.svg")
+      stub_request(:get, "https://img.shields.io/badge/OrgDeps-master%20%2F%20~%3E%200.1-yellow.svg")
     end
 
     it "renders badge" do
