@@ -64,7 +64,10 @@ class Organization < ActiveRecord::Base
     else
       ['404', 'red']
     end
-    open("http://img.shields.io/badge/OrgDeps-#{CGI.escape(text).gsub('+', '%20')}-#{color}.svg").read
+    open(
+      "https://img.shields.io/badge/OrgDeps-#{CGI.escape(text).gsub('+', '%20')}-#{color}.svg",
+      ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE
+    ).read
   end
 
   private
