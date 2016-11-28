@@ -23,6 +23,7 @@ group :production do
 end
 
 group :test do
+  gem 'bundler-audit'
   gem 'brakecheck'
   gem 'brakeman'
   gem 'minitest-rails'

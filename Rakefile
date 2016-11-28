@@ -10,3 +10,8 @@ task :brakeman do
   sh "BRAKECHECK_GEM=brakeman bundle exec brakecheck" # see https://github.com/presidentbeef/brakeman/issues/968
   sh "brakeman --exit-on-warn --format plain --run-all-checks"
 end
+
+desc "Audit gems for vulernabilities"
+task :audit do
+  sh "bundle-audit update && bundle-audit"
+end
