@@ -40,10 +40,16 @@ GEM
     arel (6.0.3)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
+    brakecheck (0.1.8)
+      faraday
+      faraday_middleware
+      minitest
+      rspec (~> 3.0)
     brakeman (3.4.1)
     builder (3.2.2)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
+    diff-lcs (1.2.5)
     dotenv (0.11.1)
       dotenv-deployment (~> 0.0.2)
     dotenv-deployment (0.0.2)
@@ -51,6 +57,8 @@ GEM
     execjs (2.2.1)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.10.1)
+      faraday (>= 0.7.4, < 1.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hashie (2.1.2)
@@ -145,6 +153,19 @@ GEM
     rake (11.3.0)
     repo_dependency_graph (0.2.0)
       organization_audit
+    rspec (3.5.0)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
+    rspec-core (3.5.4)
+      rspec-support (~> 3.5.0)
+    rspec-expectations (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-mocks (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-support (3.5.0)
     safe_yaml (1.0.3)
     sass (3.2.19)
     sass-rails (4.0.3)
@@ -178,6 +199,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
+  brakecheck
   brakeman
   dotenv
   httparty
