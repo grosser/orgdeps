@@ -6,6 +6,23 @@ class Organization < ActiveRecord::Base
 
   serialize :repositories
 
+  attr_encrypted :github_token, key: Rails.application.secrets.secret_key_base, algorithm: 'aes-256-cbc'
+
+  # A hack to make attr_encrypted always behave the same even when loaded without a database being present.
+  # On load it checks if the column exists and then defined attr_accessors if they do not.
+  # Reproduce with:
+  # CI=1 RAILS_ENV=test TEST=test/lib/samson/secrets/db_backend_test.rb rake db:drop db:create default
+  #
+  # https://github.com/attr-encrypted/attr_encrypted/issues/226
+  column = :github_token
+  bad = [
+    :"encrypted_#{column}_iv",
+    :"encrypted_#{column}_iv=",
+    :"encrypted_#{column}",
+    :"encrypted_#{column}="
+  ]
+  (instance_methods & bad).each { |m| undef_method m }
+
   def to_s
     name
   end
