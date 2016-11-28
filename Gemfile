@@ -23,6 +23,7 @@ group :production do
 end
 
 group :test do
+  gem 'brakeman'
   gem 'minitest-rails'
   gem 'minitest-rg'
   gem 'webmock'
