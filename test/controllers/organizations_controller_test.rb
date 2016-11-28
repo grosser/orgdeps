@@ -39,7 +39,9 @@ describe OrganizationsController do
     end
 
     it "does not update anything else" do
-      put :update, id: organization.to_param, organization: {name: "123456781234567"}
+      assert_raises ActionController::UnpermittedParameters do
+        put :update, id: organization.to_param, organization: {name: "123456781234567"}
+      end
       organization.reload.name.must_equal "minimum"
     end
   end
