@@ -24,8 +24,9 @@ class User < ActiveRecord::Base
     end
   end
 
+  # md5 is not safe, but we are only hiding the email ... and only showing it to yourself
   def gravatar_url
-    md5 = email.blank? ? "default" : Digest::MD5.hexdigest(email)
+    md5 = (email.blank? ? "default" : Digest::MD5.hexdigest(email))
     "https://www.gravatar.com/avatar/#{md5}"
   end
 end

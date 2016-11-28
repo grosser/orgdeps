@@ -1,0 +1,44 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "0e3e1bb6e0de0500cdbe1ad4cb6b26daeff056b3870f27aa4cf71aa9fe1da568",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/repositories_controller.rb",
+      "line": 16,
+      "link": "http://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(Organization.find_by_param!(params[:organization_id]).badge_url(params[:id]))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "RepositoriesController",
+        "method": "show"
+      },
+      "user_input": "Organization.find_by_param!(params[:organization_id]).badge_url(params[:id])",
+      "confidence": "High",
+      "note": "we want to redirect images to outside urls"
+    },
+    {
+      "warning_type": "Weak Hash",
+      "warning_code": 90,
+      "fingerprint": "c03e640a5e39c142b6fb028d59e5744a31fbe8d65da0a90e79591f45bc61c261",
+      "message": "Weak hashing algorithm (MD5) used",
+      "file": "app/models/user.rb",
+      "line": 29,
+      "link": "http://brakemanscanner.org/docs/warning_types/weak_hash/",
+      "code": "Digest::MD5.hexdigest(email)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "User",
+        "method": "gravatar_url"
+      },
+      "user_input": null,
+      "confidence": "Medium",
+      "note": "md5 is not safe, but we are only hiding the email ... and only showing it to yourself"
+    }
+  ],
+  "updated": "2016-11-28 13:54:35 -0800",
+  "brakeman_version": "3.4.1"
+}
