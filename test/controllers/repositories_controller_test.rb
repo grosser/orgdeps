@@ -23,7 +23,7 @@ describe RepositoriesController do
 
     it "renders badge" do
       get :show, id: "b", organization_id: organization, token: organization.badge_token, format: :svg
-      assert_response :success
+      assert_response :redirect
     end
 
     it "does not render with invalid token" do

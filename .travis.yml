@@ -1,0 +1,12 @@
+language: ruby
+cache:
+  bundler: true
+sudo: false
+branches:
+  only: master
+env:
+  matrix:
+    - TASK=assets:precompile
+    - TASK=brakeman
+    - TASK=default
+script: bundle exec rake $TASK
