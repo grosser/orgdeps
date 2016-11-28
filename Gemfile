@@ -11,6 +11,7 @@ gem 'dotenv'
 gem 'httparty'
 gem 'repo_dependency_graph'
 gem 'rack-cache'
+gem 'attr_encrypted'
 
 # assets
 gem 'sass-rails'

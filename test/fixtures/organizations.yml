@@ -1,6 +1,7 @@
 minimum:
   name: minimum
-  github_token: thetokencanbeverylongindeed
+  encrypted_github_token: "3pZ2eX+3Yps1mDTtDnP4hAZI4MKUVGDxOLGX4Xw+utw=\n" # thetokencanbeverylongindeed
+  encrypted_github_token_iv: "WNGJ9AYmHFNVw3Vz2QAcDQ==\n"
   badge_token: thisisthebadgetokenitisalsolong
   repositories:
     a:
