@@ -42,18 +42,15 @@ describe Organization do
 
   describe "#badge" do
     it "generates" do
-      stub_request(:get, "https://img.shields.io/badge/OrgDeps-master%20%2F%20~%3E%200.1-yellow.svg")
-      organization.badge("b").wont_be_nil
+      organization.badge_url("b").must_equal "https://img.shields.io/badge/OrgDeps-master%20%2F%20%7E%3E%200.1-yellow.svg"
     end
 
     it "generates for empty" do
-      stub_request(:get, "https://img.shields.io/badge/OrgDeps-None-green.svg")
-      organization.badge("a").wont_be_nil
+      organization.badge_url("a").must_equal "https://img.shields.io/badge/OrgDeps-None-green.svg"
     end
 
     it "generates 404 for unknown" do
-      stub_request(:get, "https://img.shields.io/badge/OrgDeps-404-red.svg")
-      organization.badge("x").wont_be_nil
+      organization.badge_url("x").must_equal "https://img.shields.io/badge/OrgDeps-404-red.svg"
     end
   end
 

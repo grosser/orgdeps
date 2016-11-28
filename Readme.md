@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/grosser/orgdeps.svg?branch=master)](https://travis-ci.org/grosser/orgdeps)
+
 https://orgdeps.herokuapp.com
 
 TODO:
