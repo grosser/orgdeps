@@ -52,10 +52,10 @@ class Organization < ActiveRecord::Base
     [uses, used]
   end
 
-  def badge(repository)
+  def badge_url(repository)
     uses, used = repository(repository)
     text, color = if uses
-      versions = used.map {|name, version| version }.compact.uniq.sort
+      versions = used.map {|_name, version| version }.compact.uniq.sort
       versions = versions.presence || ['None']
       if versions.size > MAX_VERSIONS
         versions = versions[0...MAX_VERSIONS] + ['...']
@@ -64,10 +64,7 @@ class Organization < ActiveRecord::Base
     else
       ['404', 'red']
     end
-    open(
-      "https://img.shields.io/badge/OrgDeps-#{CGI.escape(text).gsub('+', '%20')}-#{color}.svg",
-      ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE
-    ).read
+    "https://img.shields.io/badge/OrgDeps-#{CGI.escape(text).gsub('+', '%20')}-#{color}.svg"
   end
 
   private
