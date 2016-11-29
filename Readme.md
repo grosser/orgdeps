@@ -31,7 +31,6 @@ bundle exec rake ci
  - json export
  - nice screenshot (https://orgdeps.herokuapp.com/organizations/premailer/repositories)
  - auto-fetch when new token is added
- - force SSL when in production
  - travis cron
 
 License: MIT
