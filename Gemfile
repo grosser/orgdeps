@@ -4,10 +4,9 @@ ruby File.read(".ruby-version").strip
 
 gem 'rails', '~> 4.2'
 gem 'pg'
-gem 'puma'
+gem 'puma', require: false
 gem 'omniauth'
 gem 'omniauth-github'
-gem 'dotenv'
 gem 'httparty'
 gem 'repo_dependency_graph'
 gem 'rack-cache'
@@ -23,10 +22,14 @@ group :production do
   gem 'rails_12factor'
 end
 
+group :development, :test do
+  gem 'dotenv', require: false
+end
+
 group :test do
-  gem 'bundler-audit'
-  gem 'brakecheck'
-  gem 'brakeman'
+  gem 'bundler-audit', require: false
+  gem 'brakecheck', require: false
+  gem 'brakeman', require: false
   gem 'minitest-rails'
   gem 'minitest-rg'
   gem 'webmock'
