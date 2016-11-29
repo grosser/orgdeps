@@ -28,7 +28,6 @@ bundle exec rake ci
 
 ### TODO
  - airbrake + reset on deploy
- - json export
  - nice screenshot (https://orgdeps.herokuapp.com/organizations/premailer/repositories)
  - auto-fetch when new token is added
  - travis cron

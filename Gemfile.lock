@@ -212,6 +212,7 @@ DEPENDENCIES
   dotenv
   httparty
   jquery-rails
+  json
   minitest-rails
   minitest-rg
   mocha
