@@ -15,3 +15,9 @@ desc "Audit gems for vulernabilities"
 task :audit do
   sh "bundle-audit update && bundle-audit"
 end
+
+desc "Run all tests"
+task :ci do
+  tasks = File.readlines('.travis.yml').map { |l| l[/TASK='(.+)'/, 1] }.compact
+  tasks.each { |t| sh "rake #{t}" }
+end

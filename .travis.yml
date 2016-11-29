@@ -6,7 +6,7 @@ branches:
   only: master
 env:
   matrix:
-    - TASK=assets:precompile
-    - TASK=brakeman
+    - TASK='assets:precompile'
+    - TASK='brakeman'
     - TASK='db:create default'
 script: bundle exec rake $TASK
