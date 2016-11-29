@@ -3,7 +3,6 @@
 https://orgdeps.herokuapp.com
 
 TODO:
- - favicon
  - better description and getting started docs
  - json export
  - nice screenshot (https://orgdeps.herokuapp.com/organizations/premailer/repositories)
