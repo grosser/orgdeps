@@ -10,10 +10,13 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ * TODO: use imports https://github.com/twbs/bootstrap-sass/issues/79
  *= require_tree .
  *= require_self
- *= require bootstrap
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 .gravatar {
   height: 30px;
