@@ -7,7 +7,14 @@ describe RepositoriesController do
     it "renders" do
       login_as users(:minimum)
       get :index, organization_id: organization
+      assert_template 'index'
+    end
+
+    it "renders json" do
+      login_as users(:minimum)
+      get :index, organization_id: organization, format: :json
       assert_response :success
+      JSON.parse(response.body).must_equal("a"=>[["b", "~> 0.1"], ["c"]], "c"=>[["b", "master"]])
     end
 
     it "does not render if I do not have access" do

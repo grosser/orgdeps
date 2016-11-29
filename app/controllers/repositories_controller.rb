@@ -2,7 +2,13 @@ class RepositoriesController < ApplicationController
   skip_before_filter :authenticate!, only: :show
 
   def index
-    organization
+    @organization = current_user.organizations.find_by_param!(params[:organization_id])
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: @organization.repositories
+      end
+    end
   end
 
   def show
@@ -17,11 +23,5 @@ class RepositoriesController < ApplicationController
         end
       end
     end
-  end
-
-  private
-
-  def organization
-    @organization ||= current_user.organizations.find_by_param!(params[:organization_id])
   end
 end

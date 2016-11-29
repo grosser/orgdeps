@@ -11,6 +11,7 @@ gem 'httparty'
 gem 'repo_dependency_graph'
 gem 'rack-cache'
 gem 'attr_encrypted'
+gem 'json'
 
 # assets
 gem 'sass-rails'
