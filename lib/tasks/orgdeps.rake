@@ -1,8 +1,8 @@
 namespace :orgdeps do
   desc "Generate dependencies for all organizations"
-  task :deps => :environment do
+  task deps: :environment do
     success = true
-    Organization.where("github_token IS NOT NULL").find_each do |organization|
+    Organization.where("encrypted_github_token IS NOT NULL").find_each do |organization|
       puts organization
       begin
         organization.update_repositories
