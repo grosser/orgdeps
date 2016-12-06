@@ -46,11 +46,7 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
-    brakecheck (0.1.8)
-      faraday
-      faraday_middleware
-      minitest
-      rspec (~> 3.0)
+    brakecheck (0.1.9)
     brakeman (3.4.1)
     builder (3.2.2)
     bundler-audit (0.5.0)
@@ -59,15 +55,12 @@ GEM
     concurrent-ruby (1.0.2)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
-    diff-lcs (1.2.5)
     dotenv (2.1.1)
     encryptor (3.0.0)
     erubis (2.7.0)
     execjs (2.7.0)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
-    faraday_middleware (0.10.1)
-      faraday (>= 0.7.4, < 1.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hashdiff (0.3.1)
@@ -90,7 +83,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
-    minitest (5.9.1)
+    minitest (5.10.1)
     minitest-rails (2.2.1)
       minitest (~> 5.7)
       railties (~> 4.1)
@@ -160,19 +153,6 @@ GEM
     rake (11.3.0)
     repo_dependency_graph (0.2.0)
       organization_audit
-    rspec (3.5.0)
-      rspec-core (~> 3.5.0)
-      rspec-expectations (~> 3.5.0)
-      rspec-mocks (~> 3.5.0)
-    rspec-core (3.5.4)
-      rspec-support (~> 3.5.0)
-    rspec-expectations (3.5.0)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.5.0)
-    rspec-mocks (3.5.0)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.5.0)
-    rspec-support (3.5.0)
     safe_yaml (1.0.4)
     sass (3.4.22)
     sass-rails (5.0.6)
@@ -228,5 +208,8 @@ DEPENDENCIES
   uglifier
   webmock
 
+RUBY VERSION
+   ruby 2.3.1p112
+
 BUNDLED WITH
-   1.11.2
+   1.13.6
