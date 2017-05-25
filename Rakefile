@@ -7,8 +7,7 @@ Rails.application.load_tasks
 
 desc 'Run brakeman ... use brakewan -I to add new ignores'
 task :brakeman do
-  sh "brakecheck brakeman" # ideally replace with https://github.com/presidentbeef/brakeman/issues/968
-  sh "brakeman --exit-on-warn --format plain --run-all-checks"
+  sh "brakeman --ensure-latest --exit-on-err --exit-on-warn --format plain --run-all-checks"
 end
 
 desc "Audit gems for vulernabilities"
