@@ -1,5 +1,5 @@
 class RepositoriesController < ApplicationController
-  skip_before_filter :authenticate!, only: :show
+  skip_before_action :authenticate!, only: :show
 
   def index
     @organization = current_user.organizations.find_by_param!(params[:organization_id])
