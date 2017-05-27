@@ -40,6 +40,14 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
+    airbrake (6.1.1)
+      airbrake-ruby (~> 2.2, >= 2.2.5)
+    airbrake-ruby (2.2.5)
+    airbrake-user_informer (0.2.0)
+      airbrake (~> 6.0)
+      airbrake-ruby (~> 2.0)
+      rack
+      railties (>= 5.0.0, < 5.2.0)
     arel (8.0.0)
     attr_encrypted (3.0.3)
       encryptor (~> 3.0.0)
@@ -189,6 +197,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrake
+  airbrake-user_informer
   attr_encrypted
   bootstrap-sass
   brakeman
