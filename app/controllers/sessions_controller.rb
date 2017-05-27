@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :authenticate!
+  skip_before_action :authenticate!
 
   def create
     user = User.authenticate(request.env["omniauth.auth"])
@@ -9,6 +9,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    render :text => %{<html><body>Logged out!<br/><a href="/">Login?</a><body>}
+    render :inline => %{<html><body>Logged out!<br/><a href="/">Login?</a><body>}
   end
 end

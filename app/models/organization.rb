@@ -6,6 +6,7 @@ class Organization < ActiveRecord::Base
 
   serialize :repositories
 
+  attribute :github_token # TODO: bump attr_encrypted to remove this
   attr_encrypted :github_token, key: Rails.application.secrets.secret_key_base, algorithm: 'aes-256-cbc'
 
   # A hack to make attr_encrypted always behave the same even when loaded without a database being present.

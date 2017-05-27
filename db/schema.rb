@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -17,34 +16,32 @@ ActiveRecord::Schema.define(version: 20161128222818) do
   enable_extension "plpgsql"
   enable_extension "hstore"
 
-  create_table "organization_memberships", force: :cascade do |t|
-    t.integer  "user_id",         null: false
-    t.integer  "organization_id", null: false
+  create_table "organization_memberships", id: :serial, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "organization_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["user_id", "organization_id"], name: "index_organization_memberships_on_user_id_and_organization_id", unique: true
   end
 
-  add_index "organization_memberships", ["user_id", "organization_id"], name: "index_organization_memberships_on_user_id_and_organization_id", unique: true, using: :btree
-
-  create_table "organizations", force: :cascade do |t|
-    t.string   "name",                      null: false
-    t.text     "repositories"
+  create_table "organizations", id: :serial, force: :cascade do |t|
+    t.string "name", null: false
+    t.text "repositories"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "repositories_updated_at"
-    t.string   "badge_token",               null: false
-    t.string   "encrypted_github_token"
-    t.string   "encrypted_github_token_iv"
+    t.string "badge_token", null: false
+    t.string "encrypted_github_token"
+    t.string "encrypted_github_token_iv"
+    t.index ["name"], name: "index_organizations_on_name", unique: true
   end
 
-  add_index "organizations", ["name"], name: "index_organizations_on_name", unique: true, using: :btree
-
-  create_table "users", force: :cascade do |t|
-    t.string   "name",        null: false
-    t.string   "email",       null: false
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "external_id", null: false
+    t.string "external_id", null: false
   end
 
 end

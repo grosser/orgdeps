@@ -6,20 +6,21 @@ describe RepositoriesController do
   describe "#index" do
     it "renders" do
       login_as users(:minimum)
-      get :index, organization_id: organization
-      assert_template 'index'
+      get "/organizations/#{organization.to_param}/repositories"
+      assert_response :success
+      response.body.must_include "<!DOCTYPE html"
     end
 
     it "renders json" do
       login_as users(:minimum)
-      get :index, organization_id: organization, format: :json
+      get "/organizations/#{organization.to_param}/repositories.json"
       assert_response :success
       JSON.parse(response.body).must_equal("a"=>[["b", "~> 0.1"], ["c"]], "c"=>[["b", "master"]])
     end
 
     it "does not render if I do not have access" do
       login_as User.create!(name: "xxx", email: "foo@bar.com", external_id: "12345")
-      get :index, organization_id: organization
+      get "/organizations/#{organization.to_param}/repositories"
     end
   end
 
@@ -29,12 +30,12 @@ describe RepositoriesController do
     end
 
     it "renders badge" do
-      get :show, id: "b", organization_id: organization, token: organization.badge_token, format: :svg
+      get "/organizations/#{organization.to_param}/repositories/b.svg", params: {token: organization.badge_token}
       assert_response :redirect
     end
 
     it "does not render with invalid token" do
-      get :show, id: "b", organization_id: organization, token: "blob", format: :svg
+      get "/organizations/#{organization.to_param}/repositories/b.svg", params: {token: "blob"}
       assert_response :not_found
     end
   end
