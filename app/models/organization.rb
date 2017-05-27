@@ -7,7 +7,7 @@ class Organization < ActiveRecord::Base
   serialize :repositories
 
   attribute :github_token # TODO: bump attr_encrypted to remove this
-  attr_encrypted :github_token, key: Rails.application.secrets.secret_key_base, algorithm: 'aes-256-cbc'
+  attr_encrypted :github_token, key: Rails.application.secrets.secret_key_base.slice(0, 32), algorithm: 'aes-256-cbc'
 
   # A hack to make attr_encrypted always behave the same even when loaded without a database being present.
   # On load it checks if the column exists and then defined attr_accessors if they do not.
