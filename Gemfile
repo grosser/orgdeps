@@ -12,6 +12,8 @@ gem 'repo_dependency_graph'
 gem 'rack-cache'
 gem 'attr_encrypted'
 gem 'json'
+gem 'airbrake'
+gem 'airbrake-user_informer'
 
 # assets TODO: do not load in prod
 gem 'sass-rails'
