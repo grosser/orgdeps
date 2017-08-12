@@ -8,5 +8,6 @@ env:
   matrix:
     - TASK='assets:precompile' # TODO: in production mode
     - TASK='brakeman'
+    - TASK='audit'
     - TASK='db:create default'
 script: bundle exec rake $TASK
