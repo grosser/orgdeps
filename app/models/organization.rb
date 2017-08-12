@@ -72,20 +72,31 @@ class Organization < ActiveRecord::Base
 
   def badge_url(repository)
     uses, used = repository(repository)
-    text, color = if uses
-      versions = used.map {|_name, version| version }.compact.uniq.sort
-      versions = versions.presence || ['None']
+    text, color = badge_parts(used && used.map(&:last), uses)
+    "https://img.shields.io/badge/OrgDeps-#{CGI.escape(text).gsub('+', '%20')}-#{color}.svg"
+  end
+
+  private
+
+  def badge_parts(versions, uses)
+    if uses
+      versions.compact!
+      versions.uniq!
+      versions.sort_by! do |v|
+        v =~ /(\d+)(\.(\d+))?(\.(\d+))?/
+        [$1.to_i, $3.to_i, $5.to_i, v]
+      end
+      versions = ['None'] if versions.empty?
+
       if versions.size > MAX_VERSIONS
-        versions = versions[0...MAX_VERSIONS] + ['...']
+        versions = versions.first(MAX_VERSIONS - 1)
+        versions << '...'
       end
       [versions.join(' / '), (versions.size == 1 ? 'green' : 'yellow')]
     else
       ['404', 'red']
     end
-    "https://img.shields.io/badge/OrgDeps-#{CGI.escape(text).gsub('+', '%20')}-#{color}.svg"
   end
-
-  private
 
   def generate_badge_token
     self.badge_token = SecureRandom.hex(16)
