@@ -54,6 +54,18 @@ describe Organization do
     end
   end
 
+  describe "#badge_parts" do
+    it "sorts branches to the front" do
+      sorted, _ = organization.send(:badge_parts, ["2.3.0", "1.2.0", "1.10.2", "1.10.10", "master", "fire"], true)
+      sorted.must_equal "fire / master / 1.2.0 / ..."
+    end
+
+    it "sorts numbers naturally" do
+      sorted, _ = organization.send(:badge_parts, ["2.3.0", "1.2.0", "1.10.2", "1.10.10"], true)
+      sorted.must_equal "1.2.0 / 1.10.2 / 1.10.10 / 2.3.0"
+    end
+  end
+
   describe "#repository_names" do
     it "lists all repos" do
       organization.repository_names.must_equal ['a', 'b', 'c']
