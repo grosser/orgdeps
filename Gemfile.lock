@@ -161,7 +161,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (12.0.0)
-    repo_dependency_graph (0.2.4)
+    repo_dependency_graph (0.4.0)
       organization_audit
     safe_yaml (1.0.4)
     sass (3.4.24)
