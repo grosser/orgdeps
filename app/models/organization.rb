@@ -56,8 +56,9 @@ class Organization < ActiveRecord::Base
     where(name: param).first!
   end
 
+  # all available repositories
   def repository_names
-    (repositories.keys | repositories.flat_map { |n,d| d.map(&:first) }).sort
+    @repository_names ||= (repositories.keys | repositories.flat_map { |_, d| d.map(&:first) }).sort
   end
 
   def repository(name)
