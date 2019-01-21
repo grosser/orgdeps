@@ -42,7 +42,7 @@ describe Organization do
 
   describe "#badge" do
     it "generates" do
-      organization.badge_url("b").must_equal "https://img.shields.io/badge/OrgDeps-master%20%2F%20%7E%3E%200.1-yellow.svg"
+      organization.badge_url("b").must_equal "https://img.shields.io/badge/OrgDeps-master%20%2F%20~%3E%200.1-yellow.svg"
     end
 
     it "generates for empty" do
