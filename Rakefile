@@ -12,7 +12,9 @@ end
 
 desc "Audit gems for vulernabilities"
 task :audit do
-  sh "bundle-audit update && bundle-audit"
+  # CVE-2015-9284 <-> https://github.com/omniauth/omniauth/pull/809
+  # this app is not affected since it only uses 1 provider
+  sh "bundle-audit update && bundle audit check --ignore CVE-2015-9284"
 end
 
 desc "Run all tests"
