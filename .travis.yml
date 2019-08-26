@@ -4,6 +4,8 @@ cache:
 sudo: false
 branches:
   only: master
+services:
+- postgresql
 env:
   matrix:
     - TASK='assets:precompile' # TODO: in production mode
