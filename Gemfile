@@ -6,7 +6,7 @@ gem 'rails', '~> 5.1.0'
 gem 'pg'
 gem 'puma', require: false
 gem 'omniauth'
-gem 'omniauth-github'
+gem 'omniauth-github', git: "https://github.com/omniauth/omniauth-github.git" # needs >1.3.0
 gem 'httparty'
 gem 'repo_dependency_graph'
 gem 'rack-cache'
