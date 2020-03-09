@@ -129,7 +129,7 @@ GEM
     omniauth-oauth2 (1.5.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.2)
-    organization_audit (2.1.0)
+    organization_audit (2.1.1)
       json
     pg (1.1.3)
     public_suffix (2.0.5)
