@@ -10,17 +10,21 @@ class User < ActiveRecord::Base
           name: auth["info"]["name"] || auth["info"]["nickname"] || "No name",
           email: auth["info"]["email"],
           external_id: external_id,
-          organizations: github_organizations(auth)
+          organizations: github_organizations(auth.fetch("credentials").fetch("token"))
         )
       end
     end
 
     private
 
-    def github_organizations(auth)
-      url = "https://api.github.com/user/orgs?access_token=#{auth.fetch("credentials").fetch("token")}"
-      response = HTTParty.get(url, headers: {"User-Agent" => "orgdeps"})
-      response.map{|x| Organization.find_or_create_by!(name: x.fetch("login")) }
+    def github_organizations(token)
+      conn = Faraday.new(url: 'https://api.github.com')
+      conn.headers["Authorization"] = "token #{token}"
+      response = conn.get('/user/orgs')
+      raise "Bad response #{response.status} -- #{response.body}" unless response.status == 200
+
+      orgs = JSON.parse(response.body)
+      orgs.map { |x| Organization.find_or_create_by!(name: x.fetch("login")) }
     end
   end
 
