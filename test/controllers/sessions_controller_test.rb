@@ -3,7 +3,7 @@ require './test/test_helper'
 describe SessionsController do
   describe "#create" do
     it "creates a user" do
-      stub_request(:get, "https://api.github.com/user/orgs?access_token=thetoken").to_return(
+      stub_request(:get, "https://api.github.com/user/orgs").to_return(
         status: 200,
         body: JSON.dump([{"login" => "minimum"}]),
         headers: { 'Content-Type' => 'application/json' }

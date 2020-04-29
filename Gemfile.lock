@@ -84,8 +84,6 @@ GEM
       activesupport (>= 4.2.0)
     hashdiff (0.3.4)
     hashie (3.5.5)
-    httparty (0.15.5)
-      multi_xml (>= 0.5.2)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     jquery-rails (4.3.1)
@@ -221,7 +219,6 @@ DEPENDENCIES
   brakeman
   bundler-audit
   dotenv
-  httparty
   jquery-rails
   json
   maxitest

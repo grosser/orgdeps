@@ -7,7 +7,6 @@ gem 'pg'
 gem 'puma', require: false
 gem 'omniauth'
 gem 'omniauth-github', git: "https://github.com/omniauth/omniauth-github.git" # needs >1.3.0
-gem 'httparty'
 gem 'repo_dependency_graph'
 gem 'rack-cache'
 gem 'attr_encrypted'
