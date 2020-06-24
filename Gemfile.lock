@@ -132,7 +132,7 @@ GEM
     pg (1.1.3)
     public_suffix (2.0.5)
     puma (3.12.6)
-    rack (2.0.8)
+    rack (2.2.3)
     rack-cache (1.7.0)
       rack (>= 0.4)
     rack-test (1.1.0)
