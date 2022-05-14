@@ -8,7 +8,7 @@ class OrganizationsController < ApplicationController
   end
 
   def update
-    organization.update_attributes!(params.require(:organization).permit(:safe_github_token))
+    organization.update!(params.require(:organization).permit(:safe_github_token))
     redirect_to organization_repositories_path(organization)
   end
 

@@ -44,7 +44,7 @@ class Organization < ActiveRecord::Base
       organization: name,
       private: true,
     )
-    update_attributes!(
+    update!(
       repositories: data,
       repositories_updated_at: Time.now
     )
