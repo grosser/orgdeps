@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby File.read(".ruby-version").strip
 
-gem 'rails', '~> 6.0.2'
+gem 'rails', '~> 6.1.0'
 gem 'pg'
 gem 'puma', require: false
 gem 'omniauth'
