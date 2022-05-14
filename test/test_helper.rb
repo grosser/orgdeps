@@ -1,5 +1,6 @@
 ENV['RAILS_ENV'] = 'test'
 require_relative '../config/environment'
+require 'maxitest/global_must'
 require 'rails/test_help'
 require 'minitest/rails'
 require 'maxitest/autorun'
