@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/grosser/orgdeps.svg?branch=master)](https://travis-ci.org/grosser/orgdeps)
-
 List private inter project dependencies (rubygems + chef) and project badge generator.
 
  - see what a project depends on
@@ -10,6 +8,8 @@ https://orgdeps.herokuapp.com
 Uses github auth to look through Gemfile/Gemfile.lock/metadata.rb and builds a dependecny list.
 
 Powered by [repo_dependency_graph](https://github.com/grosser/repo_dependency_graph)
+
+Use `EDIT_BLOCKED` to prevent any kind of editing (prevents injection/bug exploitation etc).
 
 ### Development
 
